@@ -1,12 +1,16 @@
 package com.example.findtaste.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.findtaste.MapsActivity
 import com.example.findtaste.R
 import com.example.findtaste.models.Menu
 
@@ -14,8 +18,9 @@ class RecyclerFoodTypes (var context: Context, var menus: List<Menu>):
     RecyclerView.Adapter<RecyclerFoodTypes.ViewHolder>(){
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val image : ImageView = itemView.findViewById(R.id.recyclerFoodImage)
-        val type : TextView = itemView.findViewById(R.id.recyclerFoodType)
+        val image: ImageView = itemView.findViewById(R.id.recyclerFoodImage)
+        val type: TextView = itemView.findViewById(R.id.recyclerFoodType)
+        val layout: LinearLayout = itemView.findViewById(R.id.recyclerFoodLayout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,6 +37,11 @@ class RecyclerFoodTypes (var context: Context, var menus: List<Menu>):
 
         holder.image.setImageResource(menu.image)
         holder.type.setText(menu.foodType)
+
+        holder.layout.setOnClickListener {
+            val intent = Intent(context, MapsActivity::class.java)
+            startActivity(context, intent, null)
+        }
     }
 
     override fun getItemCount(): Int = menus.size
