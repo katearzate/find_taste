@@ -2,6 +2,7 @@ package com.example.findtaste
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.findtaste.adapters.RecyclerFoodTypes
@@ -31,7 +32,12 @@ class MainActivity : AppCompatActivity() {
         menus.add(Menu(R.drawable.dessert, "Postres"))
         menus.add(Menu(R.drawable.cafe, "Cafe"))
 
-        binding.recyclerFoodTypes.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.recyclerFoodTypes.layoutManager = GridLayoutManager(
+            this,
+            2,
+            RecyclerView.VERTICAL,
+            false
+        )
         binding.recyclerFoodTypes.adapter = RecyclerFoodTypes(this, menus)
 
 
