@@ -20,9 +20,15 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         var menus: MutableList<Menu> = arrayListOf()
-        menus.add(Menu(R.drawable.mexicana, "Mexicana"))
-        menus.add(Menu(R.drawable.japonesa, "Japonesa"))
-        menus.add(Menu(R.drawable.postres, "Postres"))
+        menus.add(Menu(R.drawable.taco, "Mexicana"))
+        menus.add(Menu(R.drawable.burger, "Estadounidense"))
+        menus.add(Menu(R.drawable.pizza, "Comida rápida"))
+        menus.add(Menu(R.drawable.dish, "Otra"))
+        menus.add(Menu(R.drawable.sushi, "Japonesa"))
+        menus.add(Menu(R.drawable.china, "China"))
+        menus.add(Menu(R.drawable.pasta, "Italiana"))
+        menus.add(Menu(R.drawable.salad, "Vegetariana"))
+        menus.add(Menu(R.drawable.dessert, "Postres"))
         menus.add(Menu(R.drawable.cafe, "Cafe"))
 
         binding.recyclerFoodTypes.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
