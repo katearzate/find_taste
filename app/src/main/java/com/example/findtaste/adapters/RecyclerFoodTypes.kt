@@ -14,7 +14,7 @@ import com.example.findtaste.MapsActivity
 import com.example.findtaste.R
 import com.example.findtaste.models.Menu
 
-class RecyclerFoodTypes (var context: Context, var menus: List<Menu>):
+abstract class RecyclerFoodTypes (var context: Context, var menus: List<Menu>):
     RecyclerView.Adapter<RecyclerFoodTypes.ViewHolder>(){
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -38,11 +38,10 @@ class RecyclerFoodTypes (var context: Context, var menus: List<Menu>):
         holder.image.setImageResource(menu.image)
         holder.type.setText(menu.foodType)
 
-        holder.layout.setOnClickListener {
-            val intent = Intent(context, MapsActivity::class.java)
-            startActivity(context, intent, null)
-        }
+        holder.layout.setOnClickListener { foodType(menu.foodType) }
     }
 
     override fun getItemCount(): Int = menus.size
+
+    abstract fun foodType(type: String)
 }
