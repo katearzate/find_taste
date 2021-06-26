@@ -3,7 +3,6 @@ package com.example.findtaste
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.findtaste.adapters.RecyclerFoodTypes
 import com.example.findtaste.databinding.ActivityMainBinding
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        var menus: MutableList<Menu> = arrayListOf()
+        val menus: MutableList<Menu> = arrayListOf()
         menus.add(Menu(R.drawable.taco, "Mexicana"))
         menus.add(Menu(R.drawable.burger, "Estadounidense"))
         menus.add(Menu(R.drawable.pizza, "Comida rápida"))
@@ -40,15 +39,5 @@ class MainActivity : AppCompatActivity() {
         )
         binding.recyclerFoodTypes.adapter = RecyclerFoodTypes(this, menus)
 
-
-
-        /*
-        recyclerView.layoutManager = GridLayoutManager(context,2,RecyclerView.VERTICAL,false)
-        recyclerView.adapter = object : AdapterEleccionItems(context, materias){
-            override fun clickClaseItem(materia: Materia) {
-                clickClaseSeleccionada(materia)
-            }
-        }
-         */
     }
 }
