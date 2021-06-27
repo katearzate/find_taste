@@ -26,7 +26,10 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(
             navigationController, AppBarConfiguration(
                 setOf(
-                    R.id.searchFragment
+                    R.id.homeFragment,
+                    R.id.searchFragment,
+                    R.id.favoriteFragment,
+                    R.id.accountFragment
                 )
             )
         )
@@ -34,8 +37,20 @@ class MainActivity : AppCompatActivity() {
         binding.menuBottomNavigation.setupWithNavController(navigationController)
         binding.menuBottomNavigation.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
+                R.id.menuHome -> {
+                    navigationController.navigate(R.id.homeFragment)
+                    return@setOnNavigationItemSelectedListener true
+                }
                 R.id.menuSearch -> {
                     navigationController.navigate(R.id.searchFragment)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.menuFavorite -> {
+                    navigationController.navigate(R.id.favoriteFragment)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.menuPersonal -> {
+                    navigationController.navigate(R.id.accountFragment)
                     return@setOnNavigationItemSelectedListener true
                 }
             }

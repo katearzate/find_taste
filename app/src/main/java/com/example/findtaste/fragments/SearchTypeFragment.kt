@@ -9,11 +9,12 @@ import com.example.findtaste.R
 import com.example.findtaste.databinding.FragmentSearchTypeBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class SearchTypeFragment : Fragment(){
+class SearchTypeFragment : Fragment(), OnMapReadyCallback {
 
     private var _binding: FragmentSearchTypeBinding? = null
     private val binding get() = _binding!!
@@ -31,19 +32,20 @@ class SearchTypeFragment : Fragment(){
     ): View? {
         _binding = FragmentSearchTypeBinding.inflate(layoutInflater)
 
-        //val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-
+        /*
+        val mapFragment : SupportMapFragment = supportFragmentManager.findFragmentById(R.id.searchTypeMap)
+        mapFragment.getMapAsync(this)
+        */
         return binding.root
     }
 
 
-    fun onMapReady(googleMap: GoogleMap) {
+    override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val morelia = LatLng(19.7, -101.2)
+        mMap.addMarker(MarkerOptions().position(morelia).title("Marca en Morelia!"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(morelia))
     }
 
 }

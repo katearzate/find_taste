@@ -27,8 +27,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
@@ -45,8 +44,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val morelia = LatLng(19.7, -101.2)
+        mMap.addMarker(MarkerOptions().position(morelia).title("Marca en Morelia!"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(morelia))
     }
+
 }
