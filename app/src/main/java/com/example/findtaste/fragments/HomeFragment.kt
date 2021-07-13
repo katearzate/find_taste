@@ -89,7 +89,6 @@ class HomeFragment : Fragment() {
                             startActivity(intent)
                         }
                     }
-
                 }
             }
             .addOnFailureListener { exception ->

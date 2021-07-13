@@ -6,8 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.findtaste.R
+import com.example.findtaste.databinding.FragmentAccountBinding
 
 class AccountFragment : Fragment() {
+
+    private var _binding: FragmentAccountBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +21,12 @@ class AccountFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false)
+        _binding = FragmentAccountBinding.inflate(layoutInflater)
+
+
+
+
+        return binding.root
     }
 
 }

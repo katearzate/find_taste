@@ -33,6 +33,34 @@ class DBManager (
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {}
 
+    fun showFavorites(): List<Commerce>{
+        val db = readableDatabase
+
+        val sql = "SELECT * FROM favorites"
+
+        val commerces: MutableList<Commerce> = mutableListOf()
+        val cursor = db.rawQuery(sql, null)
+        while (cursor.moveToNext()){
+            commerces.add(
+                Commerce(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getDouble(4),
+                    cursor.getDouble(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8)
+                )
+            )
+        }
+        cursor.close()
+        db.close()
+
+        return commerces
+    }
+
     fun addCommerce(commerce: Commerce){
         val db = writableDatabase
         val sql = """
