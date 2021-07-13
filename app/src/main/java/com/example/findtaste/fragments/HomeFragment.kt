@@ -13,15 +13,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.findtaste.MapsActivity
-import com.example.findtaste.R
 import com.example.findtaste.adapters.RecyclerFoodTypes
 import com.example.findtaste.databinding.FragmentHomeBinding
-import com.example.findtaste.databinding.FragmentSearchBinding
 import com.example.findtaste.models.HomeViewModel
 import com.example.findtaste.models.Menu
 import com.example.findtaste.models.Tools.Companion.toast
 import com.google.firebase.firestore.FirebaseFirestore
-import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
 
@@ -67,8 +64,6 @@ class HomeFragment : Fragment() {
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    var iconEst = document.getString("Otra")
-                    println("URL ICON:"+ iconEst)
                     for (type in types){
                         menus.add(Menu(document.getString(type)!!, type))
                     }
