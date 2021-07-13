@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CommerceActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/commerceImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@mipmap/ic_launcher"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/commerceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pizza Hot"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="25dp"
+            android:textSize="28dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/commerceCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categoria: Comida rapida"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/commerceDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pizzas a todo momento, escoge los sabores que desees!"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="40dp"
+            android:textSize="22dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/commerceAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Av. Madero 6080"
+            android:textColor="@color/black"
+            android:drawableStart="@android:drawable/ic_menu_directions"
+            android:drawableTint="@color/black"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="22dp"/>
+
+        <TextView
+            android:id="@+id/commerceLatLng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Av. Madero 6080"
+            android:drawableTint="@color/black"
+            android:layout_marginStart="65dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/commerceTelephone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" (443) 652 2200"
+            android:textColor="@color/black"
+            android:drawableStart="@android:drawable/stat_sys_phone_call"
+            android:drawableTint="#5C5C5C"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="22dp"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/commerceBtnFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:layout_gravity="center"
+            app:icon="@android:drawable/star_off"
+            app:iconTint="@color/white"
+            android:elevation="10dp"
+            android:backgroundTint="#7E7E7E"/>
+    </LinearLayout>
+
+</ScrollView>

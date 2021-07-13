@@ -34,7 +34,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding.mapsFoodType.setText("Categoría: ${type}")
 
+        /*
+        val commerces: List<Commerce> = //API RECOLECT ALL RESTAURANTS WITH THE SPECIFIC TYPE
 
+        if (commerces.isEmpty()){
+            binding.recyclerFavoriteCommerces.visibility = View.INVISIBLE
+            binding.noFavoriteCommerces.visibility = View.VISIBLE
+        }else{
+            binding.recyclerFavoriteCommerces.visibility = View.VISIBLE
+            binding.noFavoriteCommerces.visibility = View.GONE
+
+            binding.recyclerFavoriteCommerces.layoutManager = LinearLayoutManager(requireContext())
+            binding.recyclerFavoriteCommerces.adapter = RecyclerFavoriteCommerces(
+                requireContext(),
+                commerces
+            )
+        }
+         */
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment

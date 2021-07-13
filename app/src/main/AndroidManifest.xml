@@ -14,8 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindTaste"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".CommerceActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".MapsActivity" />
 
         <meta-data

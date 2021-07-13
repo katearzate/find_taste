@@ -1,20 +1,23 @@
 package com.example.findtaste.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.app.ActivityCompat.startActivityForResult
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.findtaste.CommerceActivity
 import com.example.findtaste.R
 import com.example.findtaste.models.Commerce
-import com.example.findtaste.models.Menu
 import com.squareup.picasso.Picasso
 
-class RecyclerFavoriteCommerces(var context: Context, var favorites: List<Commerce>):
-    RecyclerView.Adapter<RecyclerFavoriteCommerces.ViewHolder>() {
+class RecyclerMapFoodTypes(var context: Context, var commerces: List<Commerce>):
+    RecyclerView.Adapter<RecyclerMapFoodTypes.ViewHolder>() {
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val nameCommerce: TextView = itemView.findViewById(R.id.mapTypeName)
@@ -35,7 +38,7 @@ class RecyclerFavoriteCommerces(var context: Context, var favorites: List<Commer
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var commerce: Commerce = favorites.get(position)
+        var commerce: Commerce = commerces.get(position)
 
         holder.nameCommerce.setText(commerce.commerce)
         holder.address.setText(commerce.address)
@@ -43,9 +46,11 @@ class RecyclerFavoriteCommerces(var context: Context, var favorites: List<Commer
         Picasso.get().load(commerce.photo).into(holder.image)
 
         holder.layout.setOnClickListener {
-            //TODO: send to the activity where is the commerce's information
+            val intent = Intent(context, CommerceActivity::class.java)
+            intent.putExtra("commerce", commerce)
+            startActivity(context, intent, null)
         }
     }
 
-    override fun getItemCount(): Int = favorites.size
+    override fun getItemCount(): Int = commerces.size
 }

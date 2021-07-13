@@ -1,6 +1,7 @@
 package com.example.findtaste.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 class Commerce (
     @SerializedName("id")
@@ -21,4 +22,4 @@ class Commerce (
     val telephone: String?,
     @SerializedName("photo")
     val photo: String?
-)
+): Serializable
