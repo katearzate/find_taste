@@ -1,8 +1,11 @@
 package com.example.findtaste
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import com.example.findtaste.databinding.ActivityCommerceBinding
 import com.example.findtaste.models.Commerce
 import com.example.findtaste.models.DBManager
@@ -36,6 +39,14 @@ class CommerceActivity : AppCompatActivity() {
         binding.commerceAddress.setText(commerce.address)
         binding.commerceLatLng.setText("(${commerce.lat}, ${commerce.lng})")
         binding.commerceTelephone.setText(commerce.telephone)
+
+        binding.commerceTelephone.setOnClickListener {
+            var stringTelephone : String = String.format("tel: ${commerce.telephone}")
+
+            val call = Intent(Intent.ACTION_DIAL)
+            call.setData(Uri.parse(stringTelephone))
+            ContextCompat.startActivity(this, call, null)
+        }
 
         binding.commerceBtnFavorite.setOnClickListener {
             pressedFav = !pressedFav
