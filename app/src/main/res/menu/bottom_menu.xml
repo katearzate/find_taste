@@ -6,11 +6,6 @@
         android:title="Inicio"/>
 
     <item
-        android:id="@+id/menuSearch"
-        android:icon="?android:attr/actionModeWebSearchDrawable"
-        android:title="Categorias" />
-
-    <item
         android:id="@+id/menuFavorite"
         android:icon="@drawable/favorite"
         android:title="Favoritos"/>

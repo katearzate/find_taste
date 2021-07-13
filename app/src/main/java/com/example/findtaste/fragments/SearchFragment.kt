@@ -74,7 +74,7 @@ class SearchFragment : Fragment() {
                 RecyclerView.VERTICAL,
                 false
             )
-
+/*
         binding.recyclerFoodTypes.adapter = object: RecyclerFoodTypes(requireContext(), menus){
             override fun foodType(type: String) {
                 //TODO: pasar nombre de la categoria elegida al sig fragmento
@@ -83,6 +83,8 @@ class SearchFragment : Fragment() {
 
         }
 
+
+ */
         return binding.root
     }
 

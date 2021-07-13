@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
             navigationController, AppBarConfiguration(
                 setOf(
                     R.id.homeFragment,
-                    R.id.searchFragment,
                     R.id.favoriteFragment,
                     R.id.accountFragment
                 )
@@ -51,10 +50,6 @@ class MainActivity : AppCompatActivity() {
             when(item.itemId){
                 R.id.menuHome -> {
                     navigationController.navigate(R.id.homeFragment)
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.menuSearch -> {
-                    navigationController.navigate(R.id.searchFragment)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menuFavorite -> {
