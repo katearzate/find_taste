@@ -13,7 +13,6 @@ import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import androidx.core.content.res.ResourcesCompat
 import com.example.findtaste.databinding.ActivityLoginBinding
 import com.example.findtaste.models.Tools.Companion.toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -22,7 +21,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
@@ -37,7 +35,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private lateinit var locationRequest: LocationRequest
     private lateinit var locationManager: LocationManager
     private var lat = 0.0
     private var lng = 0.0
@@ -82,7 +79,10 @@ class LoginActivity : AppCompatActivity() {
 
         if (firebaseUser != null){
             //user is already loggedin
-            startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("lat", lat)
+            intent.putExtra("lng", lng)
+            startActivity(intent)
             finish()
         }
     }
@@ -168,7 +168,7 @@ class LoginActivity : AppCompatActivity() {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0F, object:
                     LocationListener {
                     override fun onLocationChanged(p0: Location) {
-                        p0?.let {
+                        p0.let {
                             lat = it.latitude
                             lng = it.longitude
                         }
@@ -190,7 +190,7 @@ class LoginActivity : AppCompatActivity() {
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0F, object:
                     LocationListener {
                     override fun onLocationChanged(p0: Location) {
-                        p0?.let {
+                        p0.let {
                             lat = it.latitude
                             lng = it.longitude
                         }

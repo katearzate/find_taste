@@ -7,7 +7,8 @@
     tools:context=".LoginActivity"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/border">
 
     <ImageView
         android:layout_width="150dp"
@@ -21,13 +22,13 @@
         android:text="Inicia sesión con tu cuenta de Google para comenzar:"
         android:textSize="18dp"
         android:textAlignment="center"
-        android:layout_margin="15dp"
-        android:paddingBottom="20dp"/>
+        android:layout_margin="20dp"
+        android:paddingTop="20dp"/>
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/loginBtnEnter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="40dp"/>
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"/>
 
 </LinearLayout>

@@ -13,14 +13,14 @@
         android:padding="18dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="#074C7A">
+        android:background="@drawable/border">
 
         <ImageView
             android:id="@+id/recyclerFoodImage"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/burger"
-            app:tint="@color/white"
+            app:tint="@color/purple_700"
             android:layout_marginBottom="10dp"/>
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="Estadounidense"
             android:textSize="18dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="bold"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

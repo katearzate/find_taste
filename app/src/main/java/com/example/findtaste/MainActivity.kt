@@ -3,12 +3,17 @@ package com.example.findtaste
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.findtaste.databinding.ActivityMainBinding
+import com.example.findtaste.models.HomeViewModel
+import com.example.findtaste.models.Tools.Companion.toast
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -16,10 +21,12 @@ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var navigationController : NavController
-
-    //firebase Auth
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var navigationController : NavController
+    private lateinit var viewModelHome: HomeViewModel
+
+    private var lat: Double = 0.0
+    private var lng: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,13 +69,23 @@ class MainActivity : AppCompatActivity() {
             return@setOnNavigationItemSelectedListener false
         }
 
+        lat = intent.getDoubleExtra("lat", 0.0)
+        lng = intent.getDoubleExtra("lng", 0.0)
+        if (lat == 0.0 && lng == 0.0){
+            "No se puede funcionar sin la ubicacion".toast(this)
+            finish()
+        }
+
+        viewModelHome = ViewModelProvider(this).get(HomeViewModel::class.java)
+        viewModelHome.setLat(lat)
+        viewModelHome.setLng(lng)
+
         //init firebase Auth
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-        //handle click, logout user
-
         /*
+        //handle click, logout user
         btn.setOnClickListener{
             firebaseAuth.signOut()
             checkUser()
@@ -88,5 +105,10 @@ class MainActivity : AppCompatActivity() {
             val email = firebaseUser.email
             //binding.email.text = email
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
