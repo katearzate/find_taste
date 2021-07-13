@@ -12,6 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.findtaste.databinding.ActivityMainBinding
+import com.example.findtaste.models.AccountViewModel
 import com.example.findtaste.models.HomeViewModel
 import com.example.findtaste.models.Tools.Companion.toast
 import com.google.firebase.auth.FirebaseAuth
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var navigationController : NavController
     private lateinit var viewModelHome: HomeViewModel
+    private val viewModelAccount: AccountViewModel by viewModels()
 
     private var lat: Double = 0.0
     private var lng: Double = 0.0
@@ -75,17 +77,12 @@ class MainActivity : AppCompatActivity() {
         viewModelHome.setLat(lat)
         viewModelHome.setLng(lng)
 
+
+
         //init firebase Auth
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-        /*
-        //handle click, logout user
-        btn.setOnClickListener{
-            firebaseAuth.signOut()
-            checkUser()
-        }
-         */
     }
 
     private fun checkUser() {
@@ -96,9 +93,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }else{
-            //user is logged in
-            val email = firebaseUser.email
-            //binding.email.text = email
+            println(firebaseUser.email)
+            firebaseUser.email?.let { viewModelAccount.setEmail(it) }
         }
     }
 

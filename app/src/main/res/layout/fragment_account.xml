@@ -20,7 +20,7 @@
         android:id="@+id/profileTextMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="xxx@gmail.com"
+        android:text="katearzate888@gmail.com"
         android:textSize="18dp"
         android:layout_marginTop="15dp"/>
 

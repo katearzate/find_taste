@@ -33,6 +33,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         lng = intent.getDoubleExtra("lng", 0.0)
 
         binding.mapsFoodType.setText("Categoría: ${type}")
+        binding.noCommerces.setText("Lo sentimos! No se encuentra ningún restaurante de esta categoria")
 
         /*
         val commerces: List<Commerce> = //API RECOLECT ALL RESTAURANTS WITH THE SPECIFIC TYPE
