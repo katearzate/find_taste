@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="10dp"
+    android:background="@drawable/border">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/mapTypeImage"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher"
+            android:scaleType="centerCrop"
+            android:layout_marginRight="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/mapTypeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pizza Hot"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/mapTypeAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Av.Madero 7500"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/mapTypeDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Consumo en el lugar * Para llevar * Abierto hasta las 23:00"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

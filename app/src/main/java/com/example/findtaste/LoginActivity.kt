@@ -171,7 +171,6 @@ class LoginActivity : AppCompatActivity() {
                         p0?.let {
                             lat = it.latitude
                             lng = it.longitude
-                            println("Lat: $lat y Lng: $lng")
                         }
                     }
 
@@ -195,7 +194,6 @@ class LoginActivity : AppCompatActivity() {
                         p0?.let {
                             lat = it.latitude
                             lng = it.longitude
-                            println("Lat: $lat y Lng: $lng")
                         }
                     }
 
@@ -209,7 +207,6 @@ class LoginActivity : AppCompatActivity() {
                 localNetworkLocation?.let {
                     lat = it.latitude
                     lng = it.longitude
-                    println("Lat: $lat y Lng: $lng")
                 }
             }
         } else {
