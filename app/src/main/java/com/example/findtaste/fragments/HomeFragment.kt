@@ -1,11 +1,13 @@
 package com.example.findtaste.fragments
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,6 +19,9 @@ import com.example.findtaste.databinding.FragmentHomeBinding
 import com.example.findtaste.databinding.FragmentSearchBinding
 import com.example.findtaste.models.HomeViewModel
 import com.example.findtaste.models.Menu
+import com.example.findtaste.models.Tools.Companion.toast
+import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
 
@@ -52,36 +57,44 @@ class HomeFragment : Fragment() {
             }
         })
 
+        val db = FirebaseFirestore.getInstance()
+
         val menus: MutableList<Menu> = arrayListOf()
-        menus.add(Menu(R.drawable.taco, "Mexicana"))
-        menus.add(Menu(R.drawable.burger, "Estadounidense"))
-        menus.add(Menu(R.drawable.pizza, "Comida rápida"))
-        menus.add(Menu(R.drawable.dish, "Otra"))
-        menus.add(Menu(R.drawable.sushi, "Japonesa"))
-        menus.add(Menu(R.drawable.china, "China"))
-        menus.add(Menu(R.drawable.pasta, "Italiana"))
-        menus.add(Menu(R.drawable.salad, "Vegetariana"))
-        menus.add(Menu(R.drawable.dessert, "Postres"))
-        menus.add(Menu(R.drawable.cafe, "Cafe"))
+        val types: ArrayList<String> = arrayListOf("Estadounidense", "Mexicana", "Comida rápida",
+            "Otra", "Japonesa", "China", "Italiana", "Vegetariana", "Postres", "Cafe")
 
-        binding.recyclerFoodTypes.layoutManager = GridLayoutManager(
-            requireContext(),
-            2,
-            RecyclerView.VERTICAL,
-            false
-        )
+        val docRef = db.collection("MyDB").document("FirebaseData")
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    var iconEst = document.getString("Otra")
+                    println("URL ICON:"+ iconEst)
+                    for (type in types){
+                        menus.add(Menu(document.getString(type)!!, type))
+                    }
 
-        binding.recyclerFoodTypes.adapter = object: RecyclerFoodTypes(requireContext(), menus){
-            override fun foodType(type: String) {
-                val intent = Intent(requireContext(), MapsActivity::class.java)
-                intent.putExtra("type", type)
-                intent.putExtra("lat", lat)
-                intent.putExtra("lng", lng)
-                startActivity(intent)
+                    binding.recyclerFoodTypes.layoutManager = GridLayoutManager(
+                        requireContext(),
+                        2,
+                        RecyclerView.VERTICAL,
+                        false
+                    )
+
+                    binding.recyclerFoodTypes.adapter = object: RecyclerFoodTypes(requireContext(), menus){
+                        override fun foodType(type: String) {
+                            val intent = Intent(requireContext(), MapsActivity::class.java)
+                            intent.putExtra("type", type)
+                            intent.putExtra("lat", lat)
+                            intent.putExtra("lng", lng)
+                            startActivity(intent)
+                        }
+                    }
+
+                }
             }
-
-        }
-
+            .addOnFailureListener { exception ->
+                "Error: $exception".toast(requireContext())
+            }
 
         return binding.root
     }

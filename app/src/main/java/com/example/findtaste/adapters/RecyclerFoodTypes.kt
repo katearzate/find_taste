@@ -1,18 +1,16 @@
 package com.example.findtaste.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.findtaste.MapsActivity
 import com.example.findtaste.R
 import com.example.findtaste.models.Menu
+import com.squareup.picasso.Picasso
 
 abstract class RecyclerFoodTypes (var context: Context, var menus: List<Menu>):
     RecyclerView.Adapter<RecyclerFoodTypes.ViewHolder>(){
@@ -35,10 +33,12 @@ abstract class RecyclerFoodTypes (var context: Context, var menus: List<Menu>):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var menu : Menu = menus.get(position)
 
-        holder.image.setImageResource(menu.image)
+        //Glide.with(context).load(menu.image).override(100,100).into(holder.image)
+
+        Picasso.get().load(menu.image).into(holder.image)
         holder.type.setText(menu.foodType)
 
-        holder.layout.setOnClickListener { foodType(menu.foodType) }
+        holder.layout.setOnClickListener { foodType(menu.foodType!!) }
     }
 
     override fun getItemCount(): Int = menus.size

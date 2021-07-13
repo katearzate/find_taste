@@ -33,6 +33,7 @@ class SearchFragment : Fragment() {
     ): View? {
         _binding = FragmentSearchBinding.inflate(layoutInflater)
 
+        /*
         val menus: MutableList<Menu> = arrayListOf()
         menus.add(Menu(R.drawable.taco, "Mexicana"))
         menus.add(Menu(R.drawable.burger, "Estadounidense"))
@@ -45,7 +46,7 @@ class SearchFragment : Fragment() {
         menus.add(Menu(R.drawable.dessert, "Postres"))
         menus.add(Menu(R.drawable.cafe, "Cafe"))
 
-        /*val db = FirebaseFirestore.getInstance()
+        val db = FirebaseFirestore.getInstance()
 
         val docRef = db.collection("MyDB").document("FirebaseData")
         docRef.get()
