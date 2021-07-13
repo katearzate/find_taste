@@ -66,7 +66,6 @@ class LoginActivity : AppCompatActivity() {
 
         //Google Signin Button
         binding.loginBtnEnter.setOnClickListener {
-            myLocation()
             Log.d(TAG, "onCreate: begin Google SIGNIN")
             val intent = googleSigninClient.signInIntent
             startActivityForResult(intent, RC_SIGN_IN)
@@ -76,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
     private fun checkUser() {
         //check if user is logged in
         val firebaseUser = firebaseAuth.currentUser
+        myLocation()
 
         if (firebaseUser != null){
             //user is already loggedin
@@ -143,7 +143,7 @@ class LoginActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == 1) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                "Permiso otorgado".toast(this)
+                "Permiso de ubicacion otorgado".toast(this)
             } else {
                 "No se puede continuar sin la  ubicacion".toast(this)
                 finish()
@@ -152,8 +152,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun myLocation() {
-        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
-            && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+            && ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION),
@@ -168,9 +168,10 @@ class LoginActivity : AppCompatActivity() {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0F, object:
                     LocationListener {
                     override fun onLocationChanged(p0: Location) {
-                        p0.let {
+                        p0?.let {
                             lat = it.latitude
                             lng = it.longitude
+                            println("Lat: $lat y Lng: $lng")
                         }
                     }
 
@@ -184,15 +185,17 @@ class LoginActivity : AppCompatActivity() {
                 localGpsLocation?.let {
                     lat = it.latitude
                     lng = it.longitude
+                    println("Lat: $lat y Lng: $lng")
                 }
             }
             if (hasNetwork) {
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0F, object:
                     LocationListener {
                     override fun onLocationChanged(p0: Location) {
-                        p0.let {
+                        p0?.let {
                             lat = it.latitude
                             lng = it.longitude
+                            println("Lat: $lat y Lng: $lng")
                         }
                     }
 
@@ -206,6 +209,7 @@ class LoginActivity : AppCompatActivity() {
                 localNetworkLocation?.let {
                     lat = it.latitude
                     lng = it.longitude
+                    println("Lat: $lat y Lng: $lng")
                 }
             }
         } else {

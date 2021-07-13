@@ -28,6 +28,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         lat = intent.getDoubleExtra("lat", 0.0)
         lng = intent.getDoubleExtra("lng", 0.0)
 
+        binding.mapsFoodType.setText("Categoría: ${type}")
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)

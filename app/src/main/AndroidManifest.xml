@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindTaste"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LoginActivity"></activity>
+
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".MapsActivity" />
 
         <meta-data
@@ -22,7 +23,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
