@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "426902368004",
+    "project_id": "findtaste-719f2",
+    "storage_bucket": "findtaste-719f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426902368004:android:f0ea7c109295461a92ea51",
+        "android_client_info": {
+          "package_name": "com.example.findtaste"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426902368004-7b7pfkma0tiv5vppqf5pb6u20090fqgh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.findtaste",
+            "certificate_hash": "ccb800d924e318277dd087759e3d0163688cac7f"
+          }
+        },
+        {
+          "client_id": "426902368004-b8ot9g2nn1p5k9s51n9ab0appr7jufld.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOJR3F0HCy4ar56R7qClB3jQr7gpBrNhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426902368004-b8ot9g2nn1p5k9s51n9ab0appr7jufld.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
