@@ -7,13 +7,13 @@
     tools:context=".LoginActivity"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center">
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/logo_ftv2"
-        android:layout_margin="65dp" />
+        android:layout_margin="30dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -24,34 +24,10 @@
         android:layout_margin="15dp"
         android:paddingBottom="20dp"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/loginEditMail"
-            android:hint="xxxxx@gmail.com"
-            android:background="#00ffffff"
-            android:drawableEnd="@android:drawable/ic_dialog_email"
-            android:inputType="textEmailAddress"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/loginBtnEnter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entrar"
-        android:textAlignment="center"
-        android:backgroundTint="@color/purple_200"
-        android:layout_margin="40dp" />
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/loginBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_margin="40dp"/>
 
 </LinearLayout>
